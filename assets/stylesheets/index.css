@@ -18,11 +18,17 @@
   --grayish-orange: hsl(28, 16%, 65%);
 }
 
+body,
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-size: 32px;
   font-family: "Spartan", sans-serif;
   font-weight: 700;
-  box-sizing: border-box;
   background-color: var(--very-dark-desaturated-blue-main);
   color: var(--white);
 }
