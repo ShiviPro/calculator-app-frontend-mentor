@@ -17,27 +17,38 @@
   </head>
   <body>
     <main class="main-content">
-      <h2>calc</h2>
-      <input type="text" name="calc-input" id="calc-input" />
-      <div class="calc-btns">
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>DEL</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>+</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>-</button>
-        <button>.</button>
-        <button>0</button>
-        <button>/</button>
-        <button>x</button>
-        <button>RESET</button>
-        <button>=</button>
+      <h2 class="brand-name">calc</h2>
+      <input
+        type="text"
+        name="calc-input"
+        id="calc-input"
+        class="calc-input"
+        value="399,981"
+        readonly
+      />
+      <div class="calc-keys">
+        <div class="calc-btns">
+          <button class="calc-btn">7</button>
+          <button class="calc-btn">8</button>
+          <button class="calc-btn">9</button>
+          <button class="calc-btn undo-key">DEL</button>
+          <button class="calc-btn">4</button>
+          <button class="calc-btn">5</button>
+          <button class="calc-btn">6</button>
+          <button class="calc-btn">+</button>
+          <button class="calc-btn">1</button>
+          <button class="calc-btn">2</button>
+          <button class="calc-btn">3</button>
+          <button class="calc-btn">-</button>
+          <button class="calc-btn">.</button>
+          <button class="calc-btn">0</button>
+          <button class="calc-btn">/</button>
+          <button class="calc-btn">x</button>
+        </div>
+        <div class="evaluate-btns">
+          <button class="calc-btn undo-key">RESET</button>
+          <button class="calc-btn evaluate-key">=</button>
+        </div>
       </div>
     </main>
 

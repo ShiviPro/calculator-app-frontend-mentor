@@ -1,20 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@400;700&display=swap");
+:root {
+  /* Background Color*/
+  --very-dark-desaturated-blue-main: hsl(222, 26%, 31%);
+  --very-dark-desaturated-blue-keys: hsl(223, 31%, 20%);
+  --very-dark-desaturated-blue-screen: hsl(224, 36%, 15%);
+  --dark-desaturated-blue-key-bg: hsl(225, 21%, 49%);
+  --red: hsl(6, 63%, 50%);
+  --light-grayish-orange: hsl(30, 25%, 89%);
+
+  /* Text Color */
+  --very-dark-grayish-blue: hsl(221, 14%, 31%);
+  --white: hsl(0, 0%, 100%);
+
+  /* Key Shadows */
+  --dark-desaturated-blue-key-shadow: hsl(224, 28%, 35%);
+  --dark-red: hsl(6, 70%, 34%);
+  --grayish-orange: hsl(28, 16%, 65%);
+}
+
+body {
+  font-size: 32px;
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
+  box-sizing: border-box;
+  background-color: var(--very-dark-desaturated-blue-main);
+  color: var(--white);
+}
+
+.brand-name {
+  margin-bottom: 0;
+}
+
 .attribution {
   font-size: 15px;
   text-align: center;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
 }
 
 .main-content {
-  width: 400px;
+  max-width: 550px;
   margin: 0 auto;
+  display: grid;
+}
+
+.calc-input {
+  background-color: var(--very-dark-desaturated-blue-screen);
+  padding: 40px;
+  border-radius: 10px;
+  color: var(--white);
+  text-align: right;
+  border: none;
+  margin: 30px 0;
 }
 
 .calc-btns {
-  padding: 20px 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 10px;
-  row-gap: 10px;
+  column-gap: 30px;
+  row-gap: 30px;
+}
+
+.calc-btn {
+  background-color: var(--light-grayish-orange);
+  color: var(--very-dark-grayish-blue);
+  box-shadow: inset 0 -4px 0 0.5px var(--grayish-orange);
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+}
+
+.calc-input,
+.calc-btn {
+  font-size: inherit;
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
+}
+
+.calc-input {
+  font-size: 50px;
+  width: 490px;
+}
+
+.evaluate-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 30px;
+  padding-top: 30px;
+}
+
+.calc-keys {
+  background-color: var(--very-dark-desaturated-blue-keys);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.undo-key {
+  background-color: var(--dark-desaturated-blue-key-bg);
+  box-shadow: inset 0 -4px 0 0.5px var(--dark-desaturated-blue-key-shadow);
+  color: var(--white);
+  font-size: 20px;
+  padding: 20px;
+}
+
+.evaluate-key {
+  background-color: var(--red);
+  color: var(--white);
+  box-shadow: inset 0 -4px 0 0.5px var(--dark-red);
+  font-size: 20px;
 }
