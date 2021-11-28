@@ -9,6 +9,13 @@ calcBtns.forEach((calcBtn) => {
   }
 });
 
+const calcUndoBtns = [];
+calcBtns.forEach((calcBtn) => {
+  if (calcBtn.classList[1] === "undo-key") {
+    calcUndoBtns.push(calcBtn);
+  }
+});
+
 const removeFormatting = (calcInput) => {
   let unformattedCalcInput = "";
   for (let charIndex = 0; charIndex <= calcInput.length; charIndex++) {
@@ -36,9 +43,9 @@ const removeOperators = (unformattedCalcInput) => {
   return operatorRemovedCalcInput;
 };
 
+let isAlreadyInPoint = false;
 const getCalcInput = () => {
   let wasPrevBtnOperator = false;
-  let isAlreadyInPoint = false;
   calcInputBtns.forEach((calcInputBtn) => {
     calcInputBtn.addEventListener("click", (event) => {
       let numbers = "0123456789";
@@ -65,18 +72,14 @@ const getCalcInput = () => {
 getCalcInput();
 
 const undoCalcInput = () => {
-  const calcUndoBtns = [];
-  calcBtns.forEach((calcBtn) => {
-    if (calcBtn.classList[1] === "undo-key") {
-      calcUndoBtns.push(calcBtn);
-    }
-  });
-
   calcUndoBtns.forEach((calcUndoBtn) => {
     calcUndoBtn.addEventListener("click", (event) => {
       switch (event.target.innerText) {
         case "DEL":
           let currCalcInput = calcInput.value;
+          if (currCalcInput.charAt(currCalcInput.length - 1) === ".") {
+            isAlreadyInPoint = false;
+          }
           calcInput.value = currCalcInput.substring(
             0,
             currCalcInput.length - 1
@@ -84,6 +87,7 @@ const undoCalcInput = () => {
           break;
         case "RESET":
           calcInput.value = "";
+          isAlreadyInPoint = false;
           break;
       }
     });
