@@ -36,24 +36,58 @@ const removeOperators = (unformattedCalcInput) => {
   return operatorRemovedCalcInput;
 };
 
-let wasPrevBtnOperator = false;
-calcInputBtns.forEach((calcInputBtn) => {
-  calcInputBtn.addEventListener("click", (event) => {
-    let numbers = "0123456789";
-    if (numbers.indexOf(event.target.innerText) !== -1) {
-      let unformattedCalcInput = removeFormatting(calcInput.value);
+const getCalcInput = () => {
+  let wasPrevBtnOperator = false;
+  let isAlreadyInPoint = false;
+  calcInputBtns.forEach((calcInputBtn) => {
+    calcInputBtn.addEventListener("click", (event) => {
+      let numbers = "0123456789";
+      if (!isAlreadyInPoint && numbers.indexOf(event.target.innerText) !== -1) {
+        let unformattedCalcInput = removeFormatting(calcInput.value);
 
-      let operatorRemovedUnformattedCalcInput =
-        removeOperators(unformattedCalcInput);
+        let operatorRemovedUnformattedCalcInput =
+          removeOperators(unformattedCalcInput);
 
-      if (
-        !wasPrevBtnOperator &&
-        unformattedCalcInput.length !== 0 &&
-        operatorRemovedUnformattedCalcInput.length % 3 === 0
-      ) {
-        calcInput.value += ",";
-      } else wasPrevBtnOperator = false;
-    } else wasPrevBtnOperator = true;
-    calcInput.value += `${event.target.innerText}`;
+        if (
+          !wasPrevBtnOperator &&
+          unformattedCalcInput.length !== 0 &&
+          operatorRemovedUnformattedCalcInput.length % 3 === 0
+        ) {
+          calcInput.value += ",";
+        } else wasPrevBtnOperator = false;
+      } else wasPrevBtnOperator = true;
+      calcInput.value += `${event.target.innerText}`;
+      if (event.target.innerText === ".") isAlreadyInPoint = true;
+    });
   });
-});
+};
+
+getCalcInput();
+
+const undoCalcInput = () => {
+  const calcUndoBtns = [];
+  calcBtns.forEach((calcBtn) => {
+    if (calcBtn.classList[1] === "undo-key") {
+      calcUndoBtns.push(calcBtn);
+    }
+  });
+
+  calcUndoBtns.forEach((calcUndoBtn) => {
+    calcUndoBtn.addEventListener("click", (event) => {
+      switch (event.target.innerText) {
+        case "DEL":
+          let currCalcInput = calcInput.value;
+          calcInput.value = currCalcInput.substring(
+            0,
+            currCalcInput.length - 1
+          );
+          break;
+        case "RESET":
+          calcInput.value = "";
+          break;
+      }
+    });
+  });
+};
+
+undoCalcInput();
